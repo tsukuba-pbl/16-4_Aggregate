@@ -1,6 +1,6 @@
 <?php
     ini_set('display_errors', 1);
-    include_once("DirectoryHandle.php");
+    include_once("./class/DirectoryHandle.php");
     //CSVファイルのあるディレクトリ
     define("TARGET_DIR", "./csv/");
 

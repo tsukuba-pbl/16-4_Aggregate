@@ -1,17 +1,17 @@
 <?php
     //結果を書き込むファイル
     define("DIST_FILE", "./csv/result.csv");
-    include_once("FileMake.php");
+    include_once("./class/FileMake.php");
 
-    $fm = new FileMake();
-
-    //ファイルが選択されていない場合
+    //ファイルが選択されていない場合はメインページにリダイレクト
     if(!isset($_POST["file"])){
         header('location: index.html');
         exit;
     }
 
     if(isset($_POST["file"])){
+        $fm = new FileMake();
+
         $result = array();
         //ファイルの中の全ユーザの最新データ取得
         $result = $fm->getUserData($_POST["file"]);
@@ -22,8 +22,6 @@
         //保存させる際のファイル名
         $j_file = "投票結果.csv";
         //日本語対応
-        $tmp_file = mb_convert_encoding(DIST_FILE, "SJIS", "AUTO");
-        //日本語対応
         $j_file = mb_convert_encoding($j_file, "SJIS", "AUTO");
 
         // ヘッダ
@@ -31,8 +29,8 @@
         // ダイアログボックスに表示するファイル名
         header("Content-Disposition: attachment; filename=$j_file");
         // 対象ファイルを出力する。
-        readfile($tmp_file);
-        // 結果のファイルを削除
+        readfile(DIST_FILE);
+        // 結果の対象ファイルを削除
         unlink(DIST_FILE);
         exit;
     }
