@@ -23,7 +23,8 @@
             }
             //ファイルの内容を1行ずつ配列に格納
             while($line = fgets($this->filehandler)){
-                $fileData[] = $line;
+                //改行を削除して格納
+                $fileData[] = str_replace(array("\r\n", "\n"), '', $line);
             }
             fclose($this->filehandler);
             return $fileData;

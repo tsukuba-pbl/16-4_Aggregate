@@ -1,12 +1,13 @@
 <?php
     include_once("FileHandle.php");
 
-    //csvのあるフォルダ
-    define("TARGET_DIR", "./csv/");
     class FileMake extends FileHandle {
-        public function __construct(){
-            parent::__construct();
+        private $dirname;
+
+        public function __construct($dirname){
+            $this->dirname = $dirname;
         }
+
         /*
             ファイルから全ユーザの最新データを取得する
         */
@@ -15,7 +16,8 @@
             $fileData = [];
             //対象のファイルのデータをすべて読込
             foreach($files as $key => $val){
-                $fileData = parent::read(TARGET_DIR.$val);
+                //ファイルの内容を取得
+                $fileData = parent::read($this->dirname.$val);
                 foreach ($fileData as $k => $value) {
                     list($user, $vote1, $vote2, $vote3, $date) = explode(",", $value);
                     //ユーザのデータがなければデータを挿入 OR ユーザの投票データがあって、今回のデータの方が最新の場合、データの更新

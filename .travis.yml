@@ -1,1 +1,15 @@
-language: node_js
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+  - hhvm
+
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --prefer-source
+
+script:
+  - mkdir -p build/logs
+  - phpunit ./test/specPhp
