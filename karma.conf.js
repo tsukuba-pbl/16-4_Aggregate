@@ -14,9 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css',
         'https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js',
-        'https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js',
         //'vote_app/js/set_item.js',
         //'spec/set_item_Test.js'
     ],
