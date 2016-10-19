@@ -10,7 +10,7 @@
     }
 
     if(isset($_POST["file"])){
-        $fm = new FileMake("./csv/");
+        $fm = new FileMake(dirname(__FILE__)."/csv/");
 
         $result = array();
         //ファイルの中の全ユーザの最新データ取得

@@ -1,6 +1,6 @@
 <?php
     //保存先のディレクトリ
-    $target_dir = "./csv/";
+    $target_dir = dirname(__FILE__)."/csv/";
     //保存先のパス(ファイル名含む)
     $target_path = $target_dir.basename($_FILES['file']['name']);
     //保存する際に日本語であると文字化けするのでその対処
